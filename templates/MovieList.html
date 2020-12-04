@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="author" content="colorlib.com">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+    <link href="/static/css/main.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/searchbar.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Movie List</title>
+
+    <style>
+        body {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a href="/movie_list" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Movie List</a>
+    <a href="/profile_page" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Profile Page</a>
+</nav>
+
+<div class="container">
+    <div class="row searchFilter">
+        <div class="col-sm-12">
+            <div class="input-group">
+                <input id="table_filter" type="text" class="form-control"
+                       aria-label="Text input with segmented button dropdown">
+                <div class="input-group-btn">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Category
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="best_animation">Best Animation</a>
+                            <a class="dropdown-item" href="best_male_lead">Best Male Lead</a>
+                        </div>
+                        <form class="btn btn-outline-secondary btn-search">
+                            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" href="/">Search
+                            </button>
+                        </form>
+                    </div>
+                    <!-- <button id="searchBtn" type="button" class="btn btn-secondary btn-search" onclick=""><span
+                             class="glyphicon glyphicon-search">&nbsp;</span> <span class="label-icon">Search</span>
+                     </button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-sm table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Movie Poster</th>
+        <th scope="col">Movie Name</th>
+        <th scope="col">Movie Release Date</th>
+        <th scope="col">Movie Nominations</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row"><img src="https://upload.wikimedia.org/wikipedia/en/8/8f/Fast_and_Furious_Poster.jpg"></th>
+        <td>Fast and Furious</td>
+        <td>10-22-15</td>
+        <td>Best Actor</td>
+    </tr>
+    <tr>
+        <th scope="row"><img
+                src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY1200_CR107,0,630,1200_AL_.jpg"
+                height="384px"
+                width="260px">
+        </th>
+        <td>GodFather</td>
+        <td>03-04-94</td>
+        <td>Best Action Thriller</td>
+    </tr>
+    <tr>
+        <th scope="row"><img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg"
+                             height="384px" width="260px"></th>
+        <td>Larry the Bird</td>
+        <td>03-14-98</td>
+        <td>Best Romantic Comedy</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
