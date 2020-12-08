@@ -80,29 +80,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row"><img src="https://upload.wikimedia.org/wikipedia/en/8/8f/Fast_and_Furious_Poster.jpg"></th>
-        <td>Fast and Furious</td>
-        <td>10-22-15</td>
-        <td>Best Actor</td>
-    </tr>
-    <tr>
-        <th scope="row"><img
-                src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY1200_CR107,0,630,1200_AL_.jpg"
-                height="384px"
-                width="260px">
-        </th>
-        <td>GodFather</td>
-        <td>03-04-94</td>
-        <td>Best Action Thriller</td>
-    </tr>
-    <tr>
-        <th scope="row"><img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg"
-                             height="384px" width="260px"></th>
-        <td>Larry the Bird</td>
-        <td>03-14-98</td>
-        <td>Best Romantic Comedy</td>
-    </tr>
+    {% for movie in movies %}
+        <tr>
+            <th scope="row"><img src={{ movie.image }} height="384px" width="260px"></th>
+            <td>{{ movie.name }}</td>
+            <td>{{ movie.release_date }}</td>
+            <td>{{ movie.movie_awards }}</td>
+        </tr>
+    {% endfor %}
     </tbody>
 </table>
 </body>
