@@ -36,6 +36,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Own
+    'movie_page',
+    'movie_search_page',
+    'profile_page',
+    'library',
+    'home_page',
 ]
 
 MIDDLEWARE = [
