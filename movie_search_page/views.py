@@ -2,11 +2,36 @@ from django.shortcuts import render
 
 from .models import Movie
 
-import ApiHitter
+import requests
+
+import json
 
 
 # Create your views here.
 def index(request, categoryname='all', moviename='all'):
+    request_url = 'http://127.0.0.1:5000/movies'
+
+    if moviename is not 'all':
+        request_url += '/title/' + moviename
+    elif categoryname is not 'all':
+        request_url += '/category/' + categoryname
+
+    response = requests.get(request_url)
+    if moviename is not 'all':
+        attributes = [json.loads(response.text)]
+    else:
+        attributes = json.loads(response.text)
+
+    movies = []
+
+    for movie in attributes:
+        movie_entry = Movie()
+        movie_entry.name = movie['entity']
+        movie_entry.image = movie['poster']
+        movie_entry.movie_awards = movie['category']
+        movie_entry.release_date = movie['released']
+        movies.append(movie_entry)
+
     movie1 = Movie()
     movie1.name = 'Fast and Furious'
     movie1.image = 'https://upload.wikimedia.org/wikipedia/en/8/8f/Fast_and_Furious_Poster.jpg'
@@ -24,6 +49,6 @@ def index(request, categoryname='all', moviename='all'):
     movie3.image = 'https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-superJumbo-v4.jpg'
     movie3.release_date = '03-14-98'
     movie3.movie_awards = 'Best Romantic Comedy'
-    movies = [movie1, movie2, movie3]
+    #  movies = [movie1, movie2, movie3]
     return render(request, 'MovieList.html', {'movies': movies})
 #    return render(request, 'MovieList.html', {'movie1': movie1}, {'movie2': movie2}, {'movie3': movie3})
