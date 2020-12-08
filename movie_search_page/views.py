@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from .models import Movie
 
+import ApiHitter
+
 
 # Create your views here.
 def index(request, categoryname='all', moviename='all'):
