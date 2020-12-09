@@ -21,7 +21,6 @@ urlpatterns = [
     path('profile_page/', include('profile_page.urls')),
     path('library', include('library.urls')),
     path('movie_list/<slug:categoryname>/<slug:moviename>', include('movie_search_page.urls')),
-    path('movie_list', include('movie_search_page.urls')),
     path('movie_page/<slug:moviename>', include('movie_page.urls')),
     path('admin/', admin.site.urls),
 ]
