@@ -288,9 +288,9 @@
                             function Submit() {
                                 const year = document.getElementById("year");
                                 var status = document.getElementsByName("status");
-                                let chosenStatus = ''
+                                var chosenStatus = ''
                                 const categories = document.getElementsByName('categories');
-                                let selectedcategory = '';
+                                var selectedcategory = '';
                                 for (var i = 0; i < categories.length; i++) {
                                     if (categories[i].checked) {
                                         // do whatever you want with the checked radio
@@ -299,7 +299,7 @@
                                         break;
                                     }
                                 }
-                                for (var j = 0; i < status.length; j++) {
+                                for (var j = 0; j < status.length; j++) {
                                     if (status[j].checked) {
                                         // do whatever you want with the checked radio
                                         chosenStatus = status[j].value
