@@ -11,13 +11,20 @@ import json
 def index(request, categoryname='all', moviename='all'):
     request_url = 'http://127.0.0.1:5000/movies'
 
-    if moviename is not 'all':
+    if categoryname == "COSTUME-DESIGN-Color":
+        categoryname = "COSTUME DESIGN (Color)"
+    elif categoryname == "COSTUME-DESIGN-Black-and-White":
+        categoryname = "COSTUME DESIGN (Black-and-White)"
+    elif categoryname == "MAKEUP-AND-HAIRSTYLING":
+        categoryname = "MAKEUP AND HAIRSTYLING"
+
+    if moviename != 'all':
         request_url += '/title/' + moviename
-    elif categoryname is not 'all':
+    elif categoryname != 'all':
         request_url += '/category/' + categoryname
 
     response = requests.get(request_url)
-    if moviename is not 'all':
+    if moviename != 'all':
         attributes = [json.loads(response.text)]
     else:
         attributes = json.loads(response.text)

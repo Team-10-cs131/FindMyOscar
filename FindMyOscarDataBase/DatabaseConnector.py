@@ -41,7 +41,7 @@ def execute_read_query(connection, query):
 
 if __name__ == '__main__':
     #  DATABASE CREDENTIALS
-    hostname = '127.0.0.1'
+    hostname = '34.94.3.237'
     user = 'root'
     password = 'carlsagan42'
     db = 'find_my_oscar'
