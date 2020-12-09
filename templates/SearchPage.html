@@ -238,83 +238,12 @@
         box-shadow: 0 10px 20px -5px rgba(255, 117, 117, 0.86);
         z-index: 225;
     }</style>
-    <style>
-        /* Dropdown Button */
-        .dropbtn {
-            color: navy;
-            padding: 16px;
-            font-size: 36px;
-            font-weight: bold;
-            border: none;
-        }
-
-        /* The container <div> - needed to position the dropdown content */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: hotpink;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        /* Links inside the dropdown */
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-        /* Show the dropdown menu on hover */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Change the background color of the dropdown button when the dropdown content is shown */
-        .dropdown:hover .dropbtn {
-        }
-    </style>
-
-    <div class="dropdown">
-        <!-- <button class="dropbtn">Categories</button>
-         <div class="dropdown-content">
-             <a href="/movie_list/COSTUME-DESIGN-Color/all">COSTUME DESIGN (Color)</a>
-             <a href="/movie_list/COSTUME-DESIGN-Black-and-White/all">COSTUME DESIGN (Black-and-White)</a>
-             <a href="/movie_list/MAKEUP-AND-HAIRSTYLING/all">MAKEUP AND HAIRSTYLING</a>
-         </div>
-         -->
-    </div>
 
     <div class="container-lg">
         <div id="cover2">
             <form class="form" method="get" action="">
                 <div class="tb">
                     <div class="td">
-
-                        <!--
-                        <div class="dropdown">
-                            <button class="dropbtn">Categories</button>
-                            <div class="dropdown-content">
-                                <a href="/movie_list/COSTUME-DESIGN-Color/all">COSTUME DESIGN (Color)</a>
-                                <a href="/movie_list/COSTUME-DESIGN-Black-and-White/all">COSTUME DESIGN
-                                    (Black-and-White)</a>
-                                <a href="/movie_list/MAKEUP-AND-HAIRSTYLING/all">MAKEUP AND HAIRSTYLING</a>
-                            </div>
-
-                        </div>
-                        -->
                         <div class="categories">
                             Categories
                             <div>
@@ -327,11 +256,11 @@
                                     (Black-and-White)</label>
                                 <input type="radio" name="categories" id="COSTUME DESIGN
                                     (Black-and-White)"
-                                       value="COSTUME-DESIGN-BLACK-AND-WHITE-">
+                                       value="COSTUME-DESIGN-BLACK-AND-WHITE">
                             </div>
                             <div>
-                                <label for="COSTUME DESIGN (Color)">Makeup And Hairstyling</label>
-                                <input type="radio" name="categories" id="COSTUME DESIGN (Color)"
+                                <label for="MAKEUP AND HAIRSTYLING">Makeup And Hairstyling</label>
+                                <input type="radio" name="categories" id="MAKEUP AND HAIRSTYLING"
                                        value="MAKEUP-AND-HAIRSTYLING">
                             </div>
                         </div>
@@ -378,6 +307,7 @@
                                         break;
                                     }
                                 }
+                                alert(chosenStatus)
                                 window.location = 'movie_list/' + selectedcategory + '?' + year.value + '?' + chosenStatus + '/all'
                             }
                         </script>
