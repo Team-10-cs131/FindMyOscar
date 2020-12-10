@@ -23,7 +23,7 @@ def index(request, categoryname='all', moviename='all'):
         request_url += '/title/' + moviename
     elif categoryname != 'FindMyOscar_Everything' and moviename != 'all':
         request_url += '/category/' + categoryname
-        s=request_url
+        s = request_url
         pattern1 = "z(.*?)z"
         pattern2 = "p(.*?)p"
         year = re.search(pattern1, s).group(1)
@@ -34,21 +34,20 @@ def index(request, categoryname='all', moviename='all'):
             if winner == 'winner':
                 request_url += '&winner=True'
 
+    response = requests.get(request_url)
+    if moviename != 'FindMyOscar_Everything' and moviename != 'all':
+        attributes = [json.loads(response.text)]
+    else:
+        attributes = json.loads(response.text)
 
-response = requests.get(request_url)
-if moviename != 'FindMyOscar_Everything' and moviename != 'all':
-    attributes = [json.loads(response.text)]
-else:
-    attributes = json.loads(response.text)
+    movies = []
 
-movies = []
+    for movie in attributes:
+        movie_entry = Movie()
+        movie_entry.name = movie['entity']
+        movie_entry.image = movie['poster']
+        movie_entry.movie_awards = movie['category']
+        movie_entry.release_date = movie['released']
+        movies.append(movie_entry)
 
-for movie in attributes:
-    movie_entry = Movie()
-    movie_entry.name = movie['entity']
-    movie_entry.image = movie['poster']
-    movie_entry.movie_awards = movie['category']
-    movie_entry.release_date = movie['released']
-    movies.append(movie_entry)
-
-return render(request, 'MovieList.html', {'movies': movies})
+    return render(request, 'MovieList.html', {'movies': movies})
