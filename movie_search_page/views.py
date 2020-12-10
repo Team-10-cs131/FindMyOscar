@@ -23,11 +23,7 @@ def index(request, categoryname='all', moviename='all'):
         request_url += '/title/' + moviename
     elif categoryname != 'FindMyOscar_Everything' and moviename != 'all':
         request_url += '/category/' + categoryname
-
-        portion_count = 1
-        year = ''
-        winner = ''
-
+        s=request_url
         pattern1 = "z(.*?)z"
         pattern2 = "p(.*?)p"
         year = re.search(pattern1, s).group(1)
