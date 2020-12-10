@@ -11,28 +11,37 @@ from .models import Movie
 
 def index(request, categoryname='all', moviename='all'):
     request_url = 'http://127.0.0.1:5000/movies'
+    # raise NameError(request)
 
-    if categoryname == "COSTUME-DESIGN-COLOR":
+    if "COSTUME-DESIGN-COLOR" in categoryname:
         categoryname = "COSTUME DESIGN (Color)"
-    elif categoryname == "COSTUME-DESIGN-BLACK-AND-WHITE":
+    elif "COSTUME-DESIGN-BLACK-AND-WHITE" in categoryname:
         categoryname = "COSTUME DESIGN (Black-and-White)"
-    elif categoryname == "MAKEUP-AND-HAIRSTYLING":
+    elif "MAKEUP-AND-HAIRSTYLING" in categoryname:
         categoryname = "MAKEUP AND HAIRSTYLING"
+
+    # raise ValueError(categoryname)
 
     if moviename != 'FindMyOscar_Everything' and moviename != 'all':
         request_url += '/title/' + moviename
-    elif categoryname != 'FindMyOscar_Everything' and moviename != 'all':
+    elif categoryname != 'FindMyOscar_Everything' and categoryname != 'all':
         request_url += '/category/' + categoryname
-        s = request_url
+
+        s = request.build_absolute_uri()
         pattern1 = "z(.*?)z"
-        pattern2 = "p(.*?)p"
+        pattern2 = "y(.*?)y"
         year = re.search(pattern1, s).group(1)
         winner = re.search(pattern2, s).group(1)
+
+        # raise ValueError(pattern1)
+        # raise ValueError(pattern2)
 
         if year != '' or winner != '':
             request_url += '?year=' + year
             if winner == 'winner':
                 request_url += '&winner=True'
+
+        # raise ValueError(request_url)
 
     response = requests.get(request_url)
     if moviename != 'FindMyOscar_Everything' and moviename != 'all':
