@@ -1,4 +1,5 @@
 import json
+import re
 
 import requests
 from django.shortcuts import render
@@ -27,41 +28,31 @@ def index(request, categoryname='all', moviename='all'):
         year = ''
         winner = ''
 
-        for letter in request:
-            if letter == 'z':
-                portion_count += 1
-            elif portion_count == 2:
-                if letter != 'z':
-                    year += letter
-                else:
-                    portion_count += 1
-            elif portion_count == 3:
-                if letter != '/':
-                    winner += letter
-                else:
-                    portion_count += 1
-            else:
-                pass
+        pattern1 = "z(.*?)z"
+        pattern2 = "p(.*?)p"
+        year = re.search(pattern1, s).group(1)
+        winner = re.search(pattern2, s).group(1)
 
-            if year != '' or winner != '':
-                request_url += '?year=' + year
-                if winner == 'winner':
-                    request_url += '&winner=True'
+        if year != '' or winner != '':
+            request_url += '?year=' + year
+            if winner == 'winner':
+                request_url += '&winner=True'
 
-    response = requests.get(request_url)
-    if moviename != 'FindMyOscar_Everything' and moviename != 'all':
-        attributes = [json.loads(response.text)]
-    else:
-        attributes = json.loads(response.text)
 
-    movies = []
+response = requests.get(request_url)
+if moviename != 'FindMyOscar_Everything' and moviename != 'all':
+    attributes = [json.loads(response.text)]
+else:
+    attributes = json.loads(response.text)
 
-    for movie in attributes:
-        movie_entry = Movie()
-        movie_entry.name = movie['entity']
-        movie_entry.image = movie['poster']
-        movie_entry.movie_awards = movie['category']
-        movie_entry.release_date = movie['released']
-        movies.append(movie_entry)
+movies = []
 
-    return render(request, 'MovieList.html', {'movies': movies})
+for movie in attributes:
+    movie_entry = Movie()
+    movie_entry.name = movie['entity']
+    movie_entry.image = movie['poster']
+    movie_entry.movie_awards = movie['category']
+    movie_entry.release_date = movie['released']
+    movies.append(movie_entry)
+
+return render(request, 'MovieList.html', {'movies': movies})
